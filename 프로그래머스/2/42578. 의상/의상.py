@@ -1,15 +1,20 @@
 def solution(clothes):
-    from collections import defaultdict
-    clothes_dict = defaultdict(int)
+    dict = {}
+    # 같은 의상 종류끼리는 같은 list에 넣어주기
+    for i in range(len(clothes)):
+        if clothes[i][1] in dict:
+            dict[clothes[i][1]] += 1
+        else:
+            dict[clothes[i][1]] = 1
     
-    # 각 의상 종류에 따라 의상의 개수를 셈
-    for _, category in clothes:
-        clothes_dict[category] += 1
-
-    answer = 1
-    # 각 종류별로 의상 선택 옵션 계산 (의상 개수 + 1)
-    for count in clothes_dict.values():
-        answer *= (count + 1)
+    # 의상 종류 개수별로 더하고, 조합 개수 구해서 더하기
     
-    # 모든 의상을 선택하지 않는 경우의 수 1을 빼서 반환
-    return answer - 1
+    num_list = list(dict.values())    
+    num_list = list(map(lambda x:x+1, num_list))
+    
+    sum = 1
+    
+    for i in num_list:
+        sum *= i
+    
+    return sum - 1
