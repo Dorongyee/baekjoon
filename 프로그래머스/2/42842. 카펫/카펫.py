@@ -1,7 +1,5 @@
 def solution(brown, yellow):
-    # [x,y]
-    # brown = 2x+2y-4
-    # yellow = xy-2x-2y+4    
+    
     possible_list = []
     area = brown + yellow
     
